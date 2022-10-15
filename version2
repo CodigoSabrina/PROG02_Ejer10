@@ -1,0 +1,76 @@
+        Scanner entrada = new Scanner (System.in);
+        int dia, mes, anyo;
+        final int ENERO = 1, FEBRERO = 2, MARZO = 3, ABRIL = 4, MAYO = 5, JUNIO = 6, JULIO = 7, AGOSTO = 8, SEPTIEMBRE = 9, OCTUBRE = 10, NOVIEMBRE = 11, DICIEMBRE = 12;
+        
+        System.out.print("Introduce el dia de una fecha: ");
+        dia = entrada.nextInt();
+        
+        System.out.print("Introduce el mes de una fecha: ");
+        mes = entrada.nextInt();
+        
+        System.out.print("Introduce el anyo de una fecha: ");
+        anyo = entrada.nextInt();
+                
+        if ((dia > 0) && (dia <= 28) && (mes == FEBRERO))
+        {
+            dia++;
+            
+            if (dia > 28) //Si el dia se convierte en mayor que 28
+            {
+                dia = 1;
+                mes++;
+                
+                System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); 
+            }
+            else //Si el dia no se convierte en mayor que 28
+            {
+                System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo);
+            }
+        }
+        
+        else if ((dia > 0) && (dia <= 30) && ((mes == ABRIL) || (mes == JUNIO) || (mes == SEPTIEMBRE) || (mes == NOVIEMBRE)))
+        {
+            dia++;
+            
+            if (dia > 30) //Si el dia se convierte en mayor que 30
+            {
+                dia = 1;
+                mes++;
+                
+                System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); 
+            }
+            else //Si el dia no se convierte en mayor que 30
+            {
+                System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo);
+            }
+        }
+        else if ((dia > 0) && (dia <= 31) && ((mes == ENERO) || (mes == MARZO) || (mes == MAYO) || (mes == JULIO) || (mes == AGOSTO) || (mes == OCTUBRE) || (mes == DICIEMBRE)))
+        {
+            dia++;
+            
+            if (dia > 31) //Si el dia se convierte en mayor que 31
+            {
+                dia = 1;
+                mes++;
+                
+                if (mes > 12) //Si el mes se convierte en mayor que 12
+                {
+                    mes = 1;
+                    anyo++;
+                    
+                    System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo);
+                }
+                else // Si el mes no se convierte en mayor que 12
+                {
+                    System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); 
+                } 
+            }
+            else //Si el dia no se convierte en mayor que 28
+            {
+                System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo);
+            }
+        }
+        else
+        {
+            System.out.printf("La fecha no es correcta.\n"); 
+        }
