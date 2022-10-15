@@ -1,0 +1,88 @@
+Scanner entrada = new Scanner (System.in);
+        int dia, mes, anyo;
+        final int ENERO = 1, FEBRERO = 2, MARZO = 3, ABRIL = 4, MAYO = 5, JUNIO = 6, JULIO = 7, AGOSTO = 8, SEPTIEMBRE = 9, OCTUBRE = 10, NOVIEMBRE = 11, DICIEMBRE = 12;
+        
+        System.out.print("Introduce el dia de una fecha: ");
+        dia = entrada.nextInt();
+        
+        System.out.print("Introduce el mes de una fecha: ");
+        mes = entrada.nextInt();
+        
+        if (/*Meses con 31 dias*/((dia > 31) && ((mes == ENERO) || (mes == MARZO) || (mes == MAYO) || (mes == JULIO) || (mes == AGOSTO) || (mes == OCTUBRE) || (mes == DICIEMBRE))) || ((dia > 28) && (mes == FEBRERO)))
+        {
+            System.out.printf("ERROR: el dia %d no entra dentro del mes %d. Reinicia el programa.\n", dia, mes);
+        }
+        else
+        {
+            System.out.print("Introduce el anyo de una fecha: ");
+            anyo = entrada.nextInt();
+
+            if ((dia >= 1) && ((mes >= 1) && (mes <= 12)) && (anyo > 0)) // Si la fecha contiene numeros correctos...
+            {
+                if ((mes == ENERO) || (mes == MARZO) || (mes == MAYO) || (mes == JULIO) || (mes == AGOSTO) || (mes == OCTUBRE) || (mes == DICIEMBRE)) // Si el mes tiene 31 días...
+                {
+                    dia++; // Suma un dia
+
+                    if (dia > 31) // Si el numero de dias supera el 31...
+                    {
+                        dia = 1; // Dia vuelve a 1
+                        mes++; // Se suma un mes
+
+                        if (mes > 12) // Si mes supera el numero 12, es decir, si era Diciembre...
+                        {
+                            mes = 1; // El mes vuelve a Enero
+                            anyo++; // Suma un año
+
+                            System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); // Fecha con el dia y mes reseteado, año añadido
+                        }
+
+                        else // Si el mes no era Diciembre...
+                        {
+                            System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); // Fecha con el dia reseteado, mes añadido y año mantenido
+                        } 
+                    }
+
+                    else // Si el numero de dias no supera el 31
+                    {
+                        System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); // Fecha con el dia añadido, mes y año mantenidos
+                    } 
+                }
+
+                else if ((mes == ABRIL) || (mes == JUNIO) || (mes == SEPTIEMBRE) || (mes == NOVIEMBRE)) // Si el mes tiene 30 dias...
+                {
+                    dia++; // Suma un dia
+
+                    if (dia > 30) // Si el numero de dias supera el 30...
+                    {
+                        dia = 1; // Dia vuelve a 1
+                        mes++; // Se suma un mes
+
+                        System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); // Fecha con el dia reseteado, mes añadido y año mantenido
+                    }
+
+                    else // Si el dia no supera el 30...
+                    {
+                        System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); // Fecha con el dia añadido, mes y año mantenidos
+                    } 
+                }
+
+                else if (mes == FEBRERO) // Si el mes es Febrero...
+                {
+                    dia++; // Suma un dia
+
+                    if (dia > 28) // Si el numero de dias supera el 28...
+                    {
+                        dia = 1; // Dia vuelve a 1
+                        mes++; // Se suma un mes
+
+                        System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); // Fecha con el dia reseteado, mes añadido y año mantenido
+                    }
+
+                    else // Si el dia no supera el 28...
+                    {
+                        System.out.printf("El dia siguiente sera %d/%d/%d.\n", dia, mes, anyo); // Fecha con el dia añadido, mes y año mantenidos
+                    } 
+                }
+            }
+        }    
+    }
